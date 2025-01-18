@@ -1,5 +1,10 @@
 import logo from '../assets/nature-logo.png';
 
+type Props = {
+    loginPopup: boolean
+    setLoginPopup: React.Dispatch<React.SetStateAction<boolean>>
+}
+
 const LoginMenu = [
     {
         id: 1,
@@ -23,7 +28,7 @@ const LoginMenu = [
     }
 ];
 
-const NavBar = () => {
+const NavBar = ({ loginPopup, setLoginPopup }: Props) => {
     return (
         <header className='bg-white/80 shadow-lg after:'>
             <div className='container flex items-center justify-between'>
@@ -43,7 +48,7 @@ const NavBar = () => {
                                     <a href={item.link}></a>
                                     {
                                         item.name === 'Login' && (
-                                            <li>{item.name}</li>
+                                            <li onClick={() => setLoginPopup(!loginPopup)}>{item.name}</li>
                                         )
                                     }
 
