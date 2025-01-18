@@ -5,15 +5,13 @@ import LoginPopup from './components/LoginPopup';
 
 function App() {
 
-  const [loginPopup, setLoginPopup] = useState<boolean>(false);
+  const [loginPopup, setLoginPopup] = useState<boolean>(true);
 
   return (
     <>
       <NavBar setLoginPopup={setLoginPopup} loginPopup={loginPopup} />
       <Hero setLoginPopup={setLoginPopup} loginPopup={loginPopup} />
-      {loginPopup && (
-        <LoginPopup />
-      )}
+      <LoginPopup setLoginPopup={setLoginPopup} loginPopup={loginPopup}/>
     </>
   );
 }
