@@ -64,10 +64,10 @@ const Signin: React.FC<props> = ({ setShowSignIn, showSignIn }) => {
                     <FaLinkedinIn className="text-2xl text-gray-600 hover:text-blue-600 transition-200" />
                 </div>
                 <p
-                    className="text-center text-gray-500 text-sm my-3 hover:text-blue-700 cursor-pointer"
-                    onClick={() => setShowSignIn(!showSignIn)}
+                    className="text-center text-gray-500 text-sm my-3 "
+
                 >
-                    Already have an Account? Log in
+                    Already have an Account? <span className='hover:text-blue-700 cursor-pointer underline underline-offset-2' onClick={() => setShowSignIn(!showSignIn)}>Log in</span>
                 </p>
             </div>
         </>

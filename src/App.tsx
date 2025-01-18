@@ -11,7 +11,7 @@ function App() {
     <>
       <NavBar setLoginPopup={setLoginPopup} loginPopup={loginPopup} />
       <Hero setLoginPopup={setLoginPopup} loginPopup={loginPopup} />
-      <LoginPopup setLoginPopup={setLoginPopup} loginPopup={loginPopup}/>
+      <LoginPopup setLoginPopup={setLoginPopup} loginPopup={loginPopup} />
     </>
   );
 }

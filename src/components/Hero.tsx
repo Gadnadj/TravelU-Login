@@ -1,4 +1,3 @@
-import LoginPopup from './LoginPopup';
 
 type Props = {
     loginPopup: boolean

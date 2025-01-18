@@ -54,14 +54,17 @@ const Login: React.FC<props> = ({ setShowSignIn, showSignIn }: props) => {
                 </button>
                 <p className="text-center text-gray-500 text-sm my-3">or login with</p>
                 <div className="flex gap-4 justify-center">
-                    <FcGoogle className="text-2xl grayscale hover:grayscale-0 transition-200 " />
-                    <FaLinkedinIn className="text-2xl text-gray-600 hover:text-blue-600 transition-200" />
+                    <FcGoogle className="text-2xl grayscale hover:grayscale-0 transition-200 cursor-pointer" />
+                    <FaLinkedinIn className="text-2xl text-gray-600 hover:text-blue-600 transition-200 cursor-pointe" />
                 </div>
                 <p
-                    className="text-center text-gray-500 text-sm my-3 hover:text-blue-700 cursor-pointer"
-                    onClick={() => setShowSignIn(!showSignIn)}
+                    className="text-center text-gray-500 text-sm my-3 "
+
                 >
-                    No Account? create Signup here
+                    No Account?{' '}
+                    <span className='hover:text-blue-700 cursor-pointer underline underline-offset-2'
+                        onClick={() => setShowSignIn(!showSignIn)}>Sign Up
+                    </span>
                 </p>
             </div>
         </>
