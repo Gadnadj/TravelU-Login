@@ -1,63 +1,51 @@
-import React from 'react';
-import BgStyle from '../assets/bg-image.jpg';
-import { FaGoogle, FaLinkedinIn } from 'react-icons/fa';
-import { FcGoogle } from 'react-icons/fc';
+import React, { useState, useRef, useEffect } from 'react';
+import SignIn from './SignIn';
+import Login from './Login';
 
-
-
-type Props = {
+type props = {
     loginPopup: boolean
     setLoginPopup: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const LoginPopup = ({ loginPopup, setLoginPopup }: Props) => {
+const LoginPopup = ({ loginPopup, setLoginPopup }: props) => {
+    const [showSignIn, setShowSignIn] = useState(false);
 
-    const bgStyle = {
-        backgroundImage: `url(${BgStyle})`,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
+
+    const loginPopupRef = useRef<HTMLDivElement>(null);
+
+    window.addEventListener('click', (e) => {
+        if (e.target === loginPopupRef.current) {
+            setLoginPopup(!loginPopup);
+        }
+    });
+
+    const bgImage = {
+        width: '100%',
         height: '100%',
-        width: '100%'
+        backgroundImage: 'url(https://picsum.photos/300/300)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
     };
     return (
         <>
             {loginPopup && (
-                <div className='fixed top-0 h-full w-full z-50 overflow-y-auto '>
-                    <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl 
-                    shadow-2xl w-[90] sm:w-auto bg-white '>
+                <div
+                    ref={loginPopupRef}
+                    className="fixed top-0 left-0 w-full h-full z-50 overflow-y-auto"
+                >
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl shadow-md w-[90%] sm:w-auto mx-auto bg-white ">
                         <div>
-                            <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 items-center sm:w-[600px] md:w-[700px] relative'>
-
-                                {/* Login form section */}
-                                <div className='p-5'>
-                                    <h1 className='text-2xl text-gray-600 font-semibold text-center mb-4'>Login</h1>
-                                    <form className='flex flex-col gap-4'>
-                                        <div>
-                                            <label className='input-label' htmlFor="username">Username</label>
-                                            <input type="text" id='username' className='input' />
-                                        </div>
-                                        <div>
-                                            <label className='input-label' htmlFor="password">Password</label>
-                                            <input type="text" id='password' className='input' />
-                                        </div>
-                                    </form>
-                                    <button className='bg-blue-500 hover:bg-blue-500/80 rounded-full mt-8 text-white py-1 px-5 block w-full'>
-                                        Submit
-                                    </button>
-                                    <p className='text-center text-gray-500 mt-2'>or login with</p>
-                                    <div className='flex items-center justify-center mt-3 gap-4'>
-                                        <FcGoogle size={25} className='cursor-pointer' />
-                                        <FaLinkedinIn size={25} className='hover:text-blue-500 cursor-pointer' />
-                                    </div>
-                                    <p className='text-center text-sm text-gray-700 mt-3'>No Account? <span className='hover:text-blue-600 cursor-pointer underline underline-offset-2'>Sign up</span></p>
-                                </div>
-
-
-                                {/* Image section */}
-                                <div className='w-full h-full'>
-                                    <img className='rounded-r-2xl' style={bgStyle} alt="" />
-                                </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center sm:w-[600px] md:w-[700px] relative">
+                                {showSignIn ? (
+                                    <SignIn setShowSignIn={setShowSignIn} showSignIn={showSignIn} />
+                                ) : (
+                                    <Login setShowSignIn={setShowSignIn} showSignIn={showSignIn} />
+                                )}
+                                <div
+                                    className="hidden sm:block rounded-e-2xl sm:h-[450px]"
+                                    style={bgImage}
+                                ></div>
                             </div>
                         </div>
                     </div>
