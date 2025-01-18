@@ -1,5 +1,8 @@
 import React from 'react';
 import BgStyle from '../assets/bg-image.jpg';
+import { FaGoogle, FaLinkedinIn } from 'react-icons/fa';
+import { FcGoogle } from 'react-icons/fc';
+
 
 
 type Props = {
@@ -20,9 +23,9 @@ const LoginPopup = ({ loginPopup, setLoginPopup }: Props) => {
     return (
         <>
             {loginPopup && (
-                <div className='fixed top-0 h-full w-full z-50 overflow-y-auto'>
+                <div className='fixed top-0 h-full w-full z-50 overflow-y-auto '>
                     <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl 
-                    shadow-2xl w-[90] sm:w-auto bg-white'>
+                    shadow-2xl w-[90] sm:w-auto bg-white '>
                         <div>
                             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 items-center sm:w-[600px] md:w-[700px] relative'>
 
@@ -42,6 +45,12 @@ const LoginPopup = ({ loginPopup, setLoginPopup }: Props) => {
                                     <button className='bg-blue-500 hover:bg-blue-500/80 rounded-full mt-8 text-white py-1 px-5 block w-full'>
                                         Submit
                                     </button>
+                                    <p className='text-center text-gray-500 mt-2'>or login with</p>
+                                    <div className='flex items-center justify-center mt-3 gap-4'>
+                                        <FcGoogle size={25} className='cursor-pointer' />
+                                        <FaLinkedinIn size={25} className='hover:text-blue-500 cursor-pointer' />
+                                    </div>
+                                    <p className='text-center text-sm text-gray-700 mt-3'>No Account? <span className='hover:text-blue-600 cursor-pointer underline underline-offset-2'>Sign up</span></p>
                                 </div>
 
 
